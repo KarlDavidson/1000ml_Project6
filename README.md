@@ -37,6 +37,7 @@ In addition to this, the target column was changed from 'yes/no' to boolean, and
 
 ## Model Evaluation
 The model to be used is an XGBoost model based on gradient boosted trees of depth 2. The model required both L1 and L2 regularization for best results. The scores were as follows:
+
 	* Train:
 		* Precision = 0.99
 		* Recall = 0.97
