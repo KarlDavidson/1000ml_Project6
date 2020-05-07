@@ -14,7 +14,7 @@ In the data used, there were a few variables that did not vary, and thus were de
 
 There was an 'id' column which was as unique as the connections themselves and served no purpose for analysis.
 
-In addition to this, the target column was changed from 'yes/no' to boolean, and renamed for ease. It should be noted that the data dictionary contained in the web document given above that most of the symbolic columns had already been dummied. Further variable reduction was completed using $\chi^2$ and ANOVA statistical methods.
+In addition to this, the target column was changed from 'yes/no' to boolean, and renamed for ease. It should be noted that the data dictionary contained in the web document given above that most of the symbolic columns had already been dummied. Further variable reduction was completed using chi^2 and ANOVA statistical methods.
 
 ## Universe Description
 * 48113 connection records
@@ -37,15 +37,14 @@ In addition to this, the target column was changed from 'yes/no' to boolean, and
 
 ## Model Evaluation
 The model to be used is an XGBoost model based on gradient boosted trees of depth 2. The model required both L1 and L2 regularization for best results. The scores were as follows:
-
-	* Train:
-		* Precision = 0.99
-		* Recall = 0.97
-	* Validation:
-		* Precision = 0.95
-		* Recall = 0.61
-	* Test:
-		* Precision = 0.97
-		* Recall = 0.68
+* Train:
+	* Precision = 0.99
+	* Recall = 0.681
+* Validation:
+	* Precision = 1.0
+	* Recall = 0.61
+* Test:
+	* Precision = 0.95
+	* Recall = 0.69
 
 ## Deliverable
