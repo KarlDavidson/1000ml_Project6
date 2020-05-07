@@ -19,14 +19,32 @@ In addition to this, the target column was changed from 'yes/no' to boolean, and
 ## Universe Description
 * 48113 connection records
 	* 200 classified as 'outliers'
+	* Each of the outliers is considered an attack
 * 77 variables
 	* 31 are considered numeric or continuous
 	* 46 are considered categorical or discrete
+* 43 variables considered statistically significant
+	* i.e. p-value < 0.05
 
 ## Modelling
-
+1. Developed a method for variable reduction using chi^2 and ANOVA methods. Reduced variables from 77 to 43, 21 in categorical or discrete, 22 in numerical or continuous, as per definitions on the data dictionary document.
+2. Attempted Logistic Regression, which scored very poorly ~0.4 precision.
+3. Attempted a Bagging model with logistic regression which was taking far too long, and was thus abandoned in the interest of time.
+4. A decision tree model was found to be decent, but couldn't be improved past a precision of about 0.8.
+5. A Random Forest model was then attempted, which yielded the best results. A precision of about 0.87.
+	* Within the RF model, I also attempted to balance the classes using various methods in imbalanced-learn. Unfortunately they yielded worse results than the default class balancing contained in the classifiers.
+6. In an attempt to improve this further, I next attempted XGBoost, which provided a much better precision score of 0.95 or higher. The recall score was also not terrible, though isn't the aim of this task.
 
 ## Model Evaluation
-
+The model to be used is an XGBoost model based on gradient boosted trees of depth 2. The model required both L1 and L2 regularization for best results. The scores were as follows:
+	* Train:
+		* Precision = 0.99
+		* Recall = 0.97
+	* Validation:
+		* Precision = 0.95
+		* Recall = 0.61
+	* Test:
+		* Precision = 0.97
+		* Recall = 0.68
 
 ## Deliverable
